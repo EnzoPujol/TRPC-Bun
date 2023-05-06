@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev": "bun run --hot src/index.ts",
+    "lint": "bun rome check ./",
+    "format": "bun rome format ./ --write"
   },
   "dependencies": {
     "@hookform/resolvers": "3.0.0",
@@ -25,6 +27,7 @@
     "husky": "8.0.3",
     "lint-staged": "12.4.2",
     "prettier": "2.6.2",
+    "rome": "^12.0.0",
     "sequelize-cli": "^6.6.0",
     "turbo": "1.2.14",
     "typescript": "4.7.2"

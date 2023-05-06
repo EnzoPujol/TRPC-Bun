@@ -1,26 +1,23 @@
 import { CreateTestMessageDto, TestMessage } from "../../domain/test.entity";
 import { TestRepository } from "../../domain/test.repository";
 import { ITestModel, TestModel } from "../../model/test.model";
-import { v4 } from 'uuid'
+import { v4 } from "uuid";
 
 export class TestBunRepository implements TestRepository {
+	async testExample(): Promise<ITestModel[]> {
+		const response = await TestModel.findAll({});
 
-    async testExample():Promise<ITestModel[]> {
+		return response;
+	}
 
-        const response = await TestModel.findAll({})
+	async createMessage(props: TestMessage): Promise<ITestModel> {
+		const response = await TestModel.create({
+			...props,
+			id: v4(),
+		});
 
-        
-        return response
-    }
+		if (!response) console.log("error");
 
-   async createMessage(props: TestMessage): Promise<ITestModel> {
-        const response = await TestModel.create({
-            ...props,
-            id: v4(),
-        })
-
-        if (!response) console.log('error')
-
-        return response
-   }
+		return response;
+	}
 }
